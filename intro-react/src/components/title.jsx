@@ -1,6 +1,10 @@
 const Title = () => {
     return (
-        <h1>My Todo List App</h1>
+        <div>
+            <h1>My Todo List App</h1>
+            <hr />
+        </div>
+        
     );
 }
 
