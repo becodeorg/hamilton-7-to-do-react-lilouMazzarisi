@@ -7,7 +7,7 @@ import './App.css'
 
 const Todo = () => {
   return (
-    <div className="todo bg-slate-700">
+    <div className="tool text-left">
       <Title/>
       <Input/>
       <List/>
