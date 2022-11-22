@@ -23,7 +23,7 @@ export default function Form(props) {
             <input
                 ref={inputTodo}
                 type="text"
-                placeholder="Enlist a new Todo"
+                placeholder="Add new Todo"
                 className="rounded-md w-max p-1"
             />
             <button
