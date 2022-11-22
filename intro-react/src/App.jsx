@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import Title from './components/title.jsx'
-import Input from './components/input.jsx'
-import List from './components/list'
+import Form from './components/form.jsx'
+import TodoList from './components/list'
 import './App.css'
 
-const Todo = () => {
+const App = () => {
+
+  const initialList = [];
+  const [todos, setTodos] = useState(initialList); // state containing the array as a first state
+
   return (
     <div className="tool text-left">
       <Title />
-      <Input />
-      <List />
+      <Form todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 }
-export default Todo;
-
-
-
+export default App;
