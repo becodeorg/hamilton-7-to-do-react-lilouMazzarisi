@@ -12,26 +12,45 @@ function TodoList(props) {
         });
         props.setTodos(newTodo);
     }
+    const handleRemove = (id) => {
+        const removeTodo = props.todos.filter((todo) => todo.id !== id);
+        props.setTodos(removeTodo);
+    }
 
     return (
         <div className="w-2/4 m-5 p-10 bg-white/20 rounded-xl">
             <h3 className="text-2xl font-light text-rose-200">Todo List : </h3>
-            <ul className='pl-8 text-green-200'>
-                {props.todos.map((todo) =>
-                    <li key={todo.id} className={todo.done ? "line-through" : ""}>
-                        <input
-                            className='m-2'
-                            type="checkbox"
-                            id={todo.id}
-                            onChange={() => {
-                                handleChange(todo.id);
-                            }}
-                        />
+
+            {props.todos.map((todo) => (
+                <div key={todo.id} className='pl-8 text-green-200'>
+                    <input
+                        className='m-2'
+                        checked={todo.done}
+                        type="checkbox"
+                        id={todo.id}
+                        onChange={() => {
+                            handleChange(todo.id);
+                        }}
+                    />
+                    <label
+                        className={todo.done ? "line-through" : "no-underline"}
+                        htmlFor={todo.id}
+                    >
                         {todo.title}
-                    </li>
-                )}
-            </ul>
-        </div>
+                    </label>
+                    <button
+                        type="button"
+                        onClick={() => handleRemove(todo.id)}
+                        className="m-2"
+                    >
+                        x
+                    </button>
+                </div>
+            ))
+            }
+
+
+        </div >
     );
 }
 

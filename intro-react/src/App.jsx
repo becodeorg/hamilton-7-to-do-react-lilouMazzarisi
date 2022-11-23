@@ -4,8 +4,6 @@ import Form from './components/form.jsx'
 import TodoList from './components/list'
 import './App.css'
 
-
-
 const App = () => {
 
   const initialList = [];
@@ -14,7 +12,6 @@ const App = () => {
   const LSKEY = "MyTodoApp"; // sets a unique key for our app 
 
   useEffect(() => {
-
     if (todos.length > 1) {
       localStorage.setItem(LSKEY + ".todos", JSON.stringify(todos));
     }
@@ -34,7 +31,7 @@ const App = () => {
   return (
     <div className="tool text-left bg-black/90 p-8">
       <Title />
-      <div className="flex justify-around">
+      <div className="flex flex-wrap justify-around">
         <Form todos={todos} setTodos={setTodos} />
         <TodoList todos={todos} setTodos={setTodos} />
       </div>
