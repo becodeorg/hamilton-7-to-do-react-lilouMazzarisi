@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Title from './components/title.jsx'
 import Form from './components/form.jsx'
 import TodoList from './components/list'
@@ -10,11 +10,14 @@ const App = () => {
   const [todos, setTodos] = useState(initialList); // state containing the array as a first state
 
   const LSKEY = "MyTodoApp"; // sets a unique key for our app 
+  const firstUpdate = useRef(true);
 
   useEffect(() => {
-    if (todos.length > 1) {
-      localStorage.setItem(LSKEY + ".todos", JSON.stringify(todos));
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
     }
+    localStorage.setItem(LSKEY + ".todos", JSON.stringify(todos));
   }, [todos]);
   // = every time react updates the App component, it makes a copy of our todos and save it to localStorage
   // updates are done : when loaded and a todo is added (only in this case)
@@ -23,9 +26,7 @@ const App = () => {
 
   useEffect(() => {
     const saveTodos = JSON.parse(localStorage.getItem(LSKEY + ".todos"));
-    if (saveTodos) {
-      setTodos(saveTodos);
-    }
+    setTodos(saveTodos ?? []);
   }, []);
 
   return (

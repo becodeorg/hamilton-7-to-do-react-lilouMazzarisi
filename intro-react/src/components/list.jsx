@@ -1,4 +1,6 @@
 import React from 'react'
+import { GiTrashCan } from 'react-icons/gi';
+
 
 function TodoList(props) {
 
@@ -43,7 +45,7 @@ function TodoList(props) {
                         onClick={() => handleRemove(todo.id)}
                         className="m-2"
                     >
-                        x
+                        <GiTrashCan className="text-red-300 text-xl" />
                     </button>
                 </div>
             ))
